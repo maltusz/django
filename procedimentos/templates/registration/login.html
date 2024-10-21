@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clin</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'procedimentos/css/style-login.css'%}" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="container">
+        <div class="content">
+          <div class="img">
+            <img src="{% static 'procedimentos/imgs/dente.png' %}" alt="" />
+          </div>
+          <hr />
+          <form class="form" method="post">
+            {% csrf_token %}
+            <div class="form-container">
+              <input class="form-input" type="text" placeholder="Digite seu usuário:" name="username" />
+              <input class="form-input" type="password" placeholder="Digite sua senha:" name="password" />
+            </div>
+            <br />
+            <button class="form-button" type="submit">Entrar</button>
+          </form>
+          {% if messages %}
+          <div class="messages">
+            {% for message in messages %}
+            <div class="message {{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
